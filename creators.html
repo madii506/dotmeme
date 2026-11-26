@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>.meme</title>
+<meta name="description" content="every creator someone paired on .meme, rebuilt from Solana: their memes, what waits in their vault, what reached them.">
+<meta name="theme-color" content="#0f0a0f">
+<meta property="og:title" content=".meme">
+<meta property="og:description" content="every creator someone paired on .meme, rebuilt from Solana: their memes, what waits in their vault, what reached them.">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav-t-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/fav-t-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/fav-t-192.png">
+<link rel="apple-touch-icon" href="/assets/img/fav-180.png">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/m.css?v=1">
+</head>
+<body data-page="creators">
+<div class="prog"></div><canvas id="flow"></canvas><div class="grid"></div>
+<header class="top">
+  <a class="brand" href="/" aria-label=".meme home"><i>.</i>meme</a>
+  <nav class="nav" aria-label="Main"><a href="/pair">pair</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#rails">payouts</a><a href="/#faq">faq</a><a href="/docs">docs</a></nav>
+  <div class="tr"><a class="btn btn-p btn-s hcta" href="/pair">pair a meme</a><button class="wbtn" id="wbtn" type="button"><i></i><span class="t">connect</span></button><button class="menu" type="button" aria-label="Open the menu"><span></span></button></div>
+</header>
+<div class="sheet"><button class="x" type="button" aria-label="Close the menu">×</button><a href="/">home</a><a href="/pair">pair a meme</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#faq">faq</a><a href="/docs">docs</a></div>
+<main class="page">
+<div class="wrap">
+<div class="phead">
+  <div class="eyebrow rv"><b>the</b> register</div>
+  <h1 class="split">every creator <em>someone paired.</em></h1>
+  <p class="rv d1">rebuilt from Solana on every visit. each pairing carries a memo and one tag, so anyone can rebuild this list themselves.</p>
+</div>
+<div class="bigs hide" id="cStats">
+  <div class="card"><span>creators</span><b id="sC">0</b><small>with a meme paired</small></div>
+  <div class="card"><span>memes</span><b id="sM">0</b><small>launched on pump.fun</small></div>
+  <div class="card"><span>gifts</span><b id="sP">0</b><small>sent, with proof</small></div>
+  <div class="card"><span>sent</span><b id="sU">$0</b><small>arrived in their apps</small></div>
+</div>
+<div class="tools rv">
+  <div class="inp"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg><input id="cQ" placeholder="search a handle" autocomplete="off" spellcheck="false" aria-label="search a handle"></div>
+  <div class="seg" id="cP"><button class="on" data-p="" type="button">all</button><button data-p="x" type="button">x</button><button data-p="instagram" type="button">instagram</button><button data-p="facebook" type="button">facebook</button></div>
+  <div class="seg" id="cSort"><button class="on" data-s="new" type="button">newest</button><button data-s="memes" type="button">memes</button><button data-s="wait" type="button">waiting</button><button data-s="sent" type="button">sent</button></div>
+</div>
+<div class="reg" id="cList"><div class="empty"><b>reading the chain…</b></div></div>
+<div style="margin-top:22px;text-align:center"><button class="btn btn-g btn-s hide" id="cMore" type="button">show more</button></div>
+<div class="card pane look rv">
+  <h3>look up any creator</h3>
+  <p class="sub">what is paired to them, what is waiting in their vault, what reached them. works for handles nobody has paired yet.</p>
+  <div class="row2"><div class="seg" id="lApp"><button class="on" data-p="x" type="button">x</button><button data-p="instagram" type="button">instagram</button><button data-p="facebook" type="button">facebook</button></div><div class="inp"><span>@</span><input id="lH" placeholder="their handle" autocomplete="off" spellcheck="false" aria-label="a handle to look up"></div><button class="btn btn-p" id="lGo" type="button">look up</button></div>
+  <div class="check" id="lMsg"></div>
+</div>
+</div>
+</main>
+<script type="module" src="/assets/js/app.js?v=1"></script>
+</body>
+</html>

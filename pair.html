@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>.meme</title>
+<meta name="description" content="pair a meme to any creator on X, Instagram or Facebook. one launch on pump.fun, signed in your own wallet.">
+<meta name="theme-color" content="#0f0a0f">
+<meta property="og:title" content=".meme">
+<meta property="og:description" content="pair a meme to any creator on X, Instagram or Facebook. one launch on pump.fun, signed in your own wallet.">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav-t-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/fav-t-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/fav-t-192.png">
+<link rel="apple-touch-icon" href="/assets/img/fav-180.png">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/m.css?v=1">
+</head>
+<body data-page="pair">
+<div class="prog"></div><canvas id="flow"></canvas><div class="grid"></div>
+<header class="top">
+  <a class="brand" href="/" aria-label=".meme home"><i>.</i>meme</a>
+  <nav class="nav" aria-label="Main"><a href="/pair">pair</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#rails">payouts</a><a href="/#faq">faq</a><a href="/docs">docs</a></nav>
+  <div class="tr"><a class="btn btn-p btn-s hcta" href="/pair">pair a meme</a><button class="wbtn" id="wbtn" type="button"><i></i><span class="t">connect</span></button><button class="menu" type="button" aria-label="Open the menu"><span></span></button></div>
+</header>
+<div class="sheet"><button class="x" type="button" aria-label="Close the menu">×</button><a href="/">home</a><a href="/pair">pair a meme</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#faq">faq</a><a href="/docs">docs</a></div>
+<main class="page">
+<div class="wrap">
+<div class="phead">
+  <div class="eyebrow rv"><b>pair</b> a meme</div>
+  <h1 class="split">pair a meme <em>to anyone.</em></h1>
+  <p class="rv d1">one launch, signed in your own wallet. the pairing is written into the coin, and every fee it earns goes to the creator you pick.</p>
+</div>
+<div class="lay">
+  <div class="card pane rv" id="pf">
+    <div class="prail" id="prail"><span data-k="app"><i>1</i>app</span><span data-k="h"><i>2</i>creator</span><span data-k="m"><i>3</i>meme</span><span data-k="n"><i>4</i>name</span><span data-k="w"><i>5</i>wallet</span></div>
+    <div class="stepn"><span>01</span>the app</div>
+    <div class="seg" id="fApp"><button class="on" data-p="x" type="button">x</button><button data-p="instagram" type="button">instagram</button><button data-p="facebook" type="button">facebook</button></div>
+    <div class="stepn"><span>02</span>the creator</div>
+    <div class="inp"><span>@</span><input id="fH" maxlength="80" placeholder="their handle, or a link to their profile" autocomplete="off" spellcheck="false" aria-label="the creator's handle"></div>
+    <div class="check" id="fCheck"></div>
+    <div class="stepn"><span>03</span>the meme</div>
+    <div class="pres" id="fPres"></div>
+    <div class="inp" style="margin-top:10px"><span>or</span><input id="fUrl" maxlength="140" placeholder="paste an https image link" autocomplete="off" spellcheck="false" aria-label="an image link"></div>
+    <div class="check" id="fUrlCheck"></div>
+    <div class="stepn"><span>04</span>its name</div>
+    <div class="fgrid"><div class="inp"><input id="fN" maxlength="32" placeholder="name" autocomplete="off" aria-label="the coin's name"></div><div class="inp"><span>$</span><input id="fS" maxlength="10" placeholder="TICKER" autocomplete="off" spellcheck="false" aria-label="the ticker" style="text-transform:uppercase"></div></div>
+    <div class="stepn"><span>05</span>your first buy <small>optional</small></div>
+    <div class="inp"><input id="fB" inputmode="decimal" placeholder="0" autocomplete="off" aria-label="first buy in SOL"><span>SOL</span></div>
+    <div class="quick" id="fQuick"><button type="button" data-v="0" class="on">none</button><button type="button" data-v="0.1">0.1</button><button type="button" data-v="0.25">0.25</button><button type="button" data-v="0.5">0.5</button><button type="button" data-v="1">1</button></div>
+    <div class="sum" id="fSum"></div>
+    <div class="acts" style="margin-top:22px"><button class="btn btn-p" id="fGo" type="button">launch on pump.fun</button><a class="btn btn-g" href="/docs#pairing">what gets signed</a></div>
+    <div class="prog4 hide" id="fProg"><div data-s="0"><i></i>making the coin's key in this browser</div><div data-s="1"><i></i>building the launch</div><div data-s="2"><i></i>waiting for your wallet</div><div data-s="3"><i></i>sending to pump.fun</div></div>
+    <div class="msg" id="fMsg" style="margin-top:14px" aria-live="polite"></div>
+  </div>
+  <div class="stick2">
+    <div class="card prev rv d1">
+      <div class="coin1"><span class="im" id="pIm"></span><div style="min-width:0"><b id="pName">smile</b><small id="pSym">$SMILE · on pump.fun</small></div><span class="chip live" style="margin-left:auto"><i></i>preview</span></div>
+      <div class="pline" id="pLine">fees to <b>x.com/…</b> via .meme</div>
+      <div class="desc"><small>written into the coin</small><span id="pDesc"></span></div>
+      <div class="vline"><span>their vault</span><b id="pVault">type a handle</b></div>
+      <div class="post" id="pPost"><div class="ph"><span class="av"></span><span class="hn" id="pHandle">@their handle</span><span class="ap" id="pApp">x</span></div><div class="body"><i style="top:16px;width:70%"></i><i style="top:32px;width:48%"></i><i style="top:58px;width:30%"></i></div><span class="gift" id="pGift">+ $25 <span id="pRail">x money</span></span></div>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+<script type="module" src="/assets/js/app.js?v=1"></script>
+</body>
+</html>

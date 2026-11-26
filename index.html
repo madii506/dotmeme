@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>.meme</title>
+<meta name="description" content="pair any meme to any creator. its fees reach them inside their own app: X Money, Instagram gifts, Facebook stars. nothing to claim.">
+<meta name="theme-color" content="#0f0a0f">
+<meta property="og:title" content=".meme">
+<meta property="og:description" content="pair any meme to any creator. its fees reach them inside their own app: X Money, Instagram gifts, Facebook stars. nothing to claim.">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav-t-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/fav-t-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/fav-t-192.png">
+<link rel="apple-touch-icon" href="/assets/img/fav-180.png">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/m.css?v=1">
+</head>
+<body data-page="index">
+<div class="prog"></div><canvas id="flow"></canvas><div class="grid"></div>
+<header class="top">
+  <a class="brand" href="/" aria-label=".meme home"><i>.</i>meme</a>
+  <nav class="nav" aria-label="Main"><a href="/pair">pair</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#rails">payouts</a><a href="/#faq">faq</a><a href="/docs">docs</a></nav>
+  <div class="tr"><a class="btn btn-p btn-s hcta" href="/pair">pair a meme</a><button class="wbtn" id="wbtn" type="button"><i></i><span class="t">connect</span></button><button class="menu" type="button" aria-label="Open the menu"><span></span></button></div>
+</header>
+<div class="sheet"><button class="x" type="button" aria-label="Close the menu">×</button><a href="/">home</a><a href="/pair">pair a meme</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#faq">faq</a><a href="/docs">docs</a></div>
+<main>
+<section class="hero" id="top">
+  <div class="floaters" id="floaters" aria-hidden="true"></div>
+  <canvas id="heroCv" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h1 class="wordmark" id="wm"><i>.</i>meme</h1>
+    <div><div class="pairline rv d1"><span class="faint">fees to</span> <span class="pl" id="plHost">x.com/</span><span class="bar"></span> <span class="faint">via</span> <span class="pink">.meme</span><span class="cur"></span></div></div>
+    <p class="sub rv d2">pair any meme to any creator. its fees reach them inside their own app.</p>
+    <div class="cta rv d3"><a class="btn btn-p" href="/pair">pair a meme</a><a class="btn btn-g" href="#how">how it works</a></div>
+  </div>
+  <div class="cue" aria-hidden="true"></div>
+</section>
+
+<div class="marq" aria-hidden="true"><div id="marq"><span>x <b>→ x money</b></span><span>instagram <b>→ gifts</b></span><span>facebook <b>→ stars</b></span><span><b>nothing to claim</b></span><span>every <b>$25</b> becomes one gift</span><span>the pairing is <b>locked at launch</b></span><span>one message from a creator <b>ends it</b></span><span>every payout <b>with its proof</b></span></div></div>
+
+<section class="band" id="how">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>01</b> how it works</div>
+    <h2 class="split">one meme. one creator. <em>every trade pays them.</em></h2>
+  </div>
+  <div class="story" id="story">
+    <div class="stick wrap">
+      <div>
+        <div class="steps">
+          <div class="st on" data-i="0"><b><span>01</span>the meme</b><p>pick a meme and a name. it becomes a coin on pump.fun, launched from your own wallet.</p></div>
+          <div class="st" data-i="1"><b><span>02</span>the pairing</b><p>one line in the coin, locked at launch: whose meme it is. the coin's creator fees belong to them now.</p></div>
+          <div class="st" data-i="2"><b><span>03</span>the vault</b><p>every buy and sell drops a fee into that creator's vault. you can watch it fill.</p></div>
+          <div class="st" data-i="3"><b><span>04</span>the gift</b><p>each time $25 is waiting, it lands on their post as a gift, in their app. nothing for them to claim.</p></div>
+        </div>
+        <div class="rail"><i id="storyRail"></i></div>
+      </div>
+      <canvas id="storyCv"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="pair">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>02</b> pair it</div>
+    <h2 class="split">pick the app. type the handle. <em>pick the meme.</em></h2>
+    <p class="lead rv">try it here. the real launch is one click away, signed in your own wallet.</p>
+    <div class="build">
+      <div class="card pane rv">
+        <div class="field"><label>the app</label><div class="seg" id="bApp"><button class="on" data-p="x">x</button><button data-p="instagram">instagram</button><button data-p="facebook">facebook</button></div></div>
+        <div class="field" style="margin-top:16px"><label for="bHandle">the creator</label><div class="inp"><span>@</span><input id="bHandle" maxlength="30" placeholder="their handle" autocomplete="off"></div></div>
+        <div class="field" style="margin-top:16px"><label>the meme</label><div class="pres" id="bPres"></div></div>
+        <div style="display:flex;gap:12px;margin-top:22px;flex-wrap:wrap"><a class="btn btn-p" id="bGo" href="/pair">launch it for real</a><button class="btn btn-g" id="bGift" type="button">watch a gift land</button></div>
+      </div>
+      <div class="card prev rv d1">
+        <div class="coin1"><span class="im" id="pvIm"></span><div style="min-width:0"><b id="pvName">smile</b><small id="pvSym">$SMILE · on pump.fun</small></div><span class="chip live" style="margin-left:auto"><i></i>preview</span></div>
+        <div class="pline" id="pvLine">fees to <b>x.com/@…</b> via .meme</div>
+        <div class="post" id="pvPost"><div class="ph"><span class="av"></span><span class="hn" id="pvHandle">@their handle</span><span class="ap" id="pvApp">x</span></div><div class="body"><i style="top:16px;width:70%"></i><i style="top:32px;width:48%"></i><i style="top:58px;width:30%"></i></div><span class="gift" id="pvGift">+ $25 <span id="pvRail">x money</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="rails">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>03</b> the payout</div>
+    <h2 class="split">every $25 becomes <em>one gift.</em></h2>
+    <p class="lead rv">fees fill the creator's vault. each time it holds $25, that $25 goes out in their app as one gift: same size every time, so every receipt reads the same.</p>
+    <div class="quant">
+      <div class="card jar rv"><canvas id="jarCv"></canvas><small>a vault filling, then paying out, on a loop</small></div>
+      <div class="rails">
+        <div class="card rl spot rv"><div class="ic ic-x"><span class="b1">$25</span><span class="b2">sent</span></div><div><b>x → x money</b><p>sent to their X account as money, inside X.</p><span class="lim">X Money is US-only for now, one payment per person per day</span></div></div>
+        <div class="card rl spot rv d1"><div class="ic ic-ig"><span class="gb"></span><span class="gb g2"></span></div><div><b>instagram → gifts</b><p>sent as gifts on their latest reel.</p><span class="lim">only works once the creator has gifts turned on</span></div></div>
+        <div class="card rl spot rv d2"><div class="ic ic-fb"><span class="s1">★</span><span class="s2">★</span><span class="s3">★</span></div><div><b>facebook → stars</b><p>sent as stars on their latest video or reel.</p><span class="lim">only works once the creator can receive stars</span></div></div>
+      </div>
+    </div>
+    <p class="note rv">until a creator can receive in their app, their $25s wait in their vault, in public. nothing is ever re-pointed to anyone else.</p>
+  </div>
+</section>
+
+<section class="band" id="register">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>04</b> the register</div>
+    <h2 class="split">every creator <em>someone paired.</em></h2>
+    <p class="lead rv">read straight from Solana: every pairing carries a memo and one tag, so the whole register can be rebuilt by anyone.</p>
+    <div class="reg" id="reg"><div class="empty"><b>reading the chain…</b></div></div>
+    <div style="margin-top:24px" class="rv"><a class="btn btn-g btn-s" href="/creators">all creators</a></div>
+  </div>
+</section>
+
+<section class="band" id="receipts">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>05</b> receipts</div>
+    <h2 class="split">every payout, <em>with its proof.</em></h2>
+    <p class="lead rv">each gift is recorded on-chain by the payout wallet, with what arrived and a link to the proof on the creator's own post.</p>
+    <div class="tbl rv" id="rcp"><div class="row h"><span>creator</span><span>landed as</span><span>amount</span><span>when</span><span>proof</span></div><div class="row"><span class="dim" style="grid-column:1/-1">reading the chain…</span></div></div>
+  </div>
+</section>
+
+<section class="band" id="words">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>06</b> words</div>
+    <h2 class="split">the whole thing <em>in eight words.</em></h2>
+    <div class="words">
+      <div class="card wd spot rv"><b>pairing line</b><p>the one line in a coin that says whose meme it is. locked at launch.</p></div>
+      <div class="card wd spot rv d1"><b>vault</b><p>the wallet that is the coin's on-chain creator. its fees land there.</p></div>
+      <div class="card wd spot rv d2"><b>queue</b><p>what is waiting in a vault right now, in public.</p></div>
+      <div class="card wd spot rv d3"><b>quantum</b><p>$25. every payout is exactly one of these.</p></div>
+      <div class="card wd spot rv"><b>landing</b><p>the moment a gift shows up on their post.</p></div>
+      <div class="card wd spot rv d1"><b>cold</b><p>a creator whose app can't receive yet. their queue waits.</p></div>
+      <div class="card wd spot rv d2"><b>receipt</b><p>the on-chain record of a landing, with its proof.</p></div>
+      <div class="card wd spot rv d3"><b>out</b><p>a creator who asked to stop. nothing new pairs to them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="cannot">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>07</b> limits</div>
+    <h2 class="split">what it can't do, <em>and what it does instead.</em></h2>
+    <div class="cant rv">
+      <div class="cr2 h"><div>it can't</div><div>so it</div></div>
+      <div class="cr2"><div>send gifts by software. no app lets it.</div><div><b>a person sends each one</b> from the payout wallet's phone, and records it on-chain.</div></div>
+      <div class="cr2"><div>pay a creator whose app can't receive.</div><div><b>keeps their $25s waiting</b> in their vault, in public, until it can.</div></div>
+      <div class="cr2"><div>ask creators first. there are millions.</div><div><b>ends a pairing for good</b> the moment a creator asks, no questions.</div></div>
+      <div class="cr2"><div>avoid the apps' own cuts.</div><div><b>prints three numbers per payout:</b> what was earned, what each app took, what arrived.</div></div>
+      <div class="cr2"><div>change a pairing after launch.</div><div><b>locks it in the coin itself.</b> nobody can re-point a coin's fees, including us.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="consent">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>08</b> consent</div>
+    <h2 class="split">nobody asked them first. <em>one message ends it.</em></h2>
+    <div class="consent">
+      <div class="card rv"><h3>a gift is not an endorsement</h3><p>being paired means someone made a meme and pointed its fees at you. it doesn't mean you know .meme exists, and nothing here says otherwise.</p></div>
+      <div class="card rv d1"><h3>one message, for good</h3><p>a creator who asks out is out: no new coin can pair to them, and what is already waiting is sent to them only if they want it. otherwise it stays in their vault, published, never re-pointed.</p></div>
+      <div class="card rv d2"><h3>no faces, no names in our art</h3><p>handles only appear where a visitor typed them. every illustration on this site uses blank handles.</p></div>
+      <div class="card rv d3"><h3>the launcher is public</h3><p>every pairing shows the wallet that launched it. a meme is somebody's choice, and that somebody is on the record.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="eyebrow rv"><b>09</b> questions</div>
+    <h2 class="split">asked <em>before you ask.</em></h2>
+    <div class="faq" id="faqs"></div>
+  </div>
+</section>
+
+<section class="closing">
+  <canvas id="endCv"></canvas>
+  <div class="in2"><div class="word split"><i>.</i>meme</div><p class="rv">make the meme. pick the creator. they get paid.</p><div class="rv" style="margin-top:28px"><a class="btn btn-p" href="/pair">pair a meme</a></div></div>
+</section>
+</main>
+<script type="module" src="/assets/js/home.js?v=1"></script>
+</body>
+</html>

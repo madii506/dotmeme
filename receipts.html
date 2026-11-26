@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>.meme</title>
+<meta name="description" content="every .meme payout, written on Solana with its proof.">
+<meta name="theme-color" content="#0f0a0f">
+<meta property="og:title" content=".meme">
+<meta property="og:description" content="every .meme payout, written on Solana with its proof.">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav-t-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/fav-t-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/fav-t-192.png">
+<link rel="apple-touch-icon" href="/assets/img/fav-180.png">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/m.css?v=1">
+</head>
+<body data-page="receipts">
+<div class="prog"></div><canvas id="flow"></canvas><div class="grid"></div>
+<header class="top">
+  <a class="brand" href="/" aria-label=".meme home"><i>.</i>meme</a>
+  <nav class="nav" aria-label="Main"><a href="/pair">pair</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#rails">payouts</a><a href="/#faq">faq</a><a href="/docs">docs</a></nav>
+  <div class="tr"><a class="btn btn-p btn-s hcta" href="/pair">pair a meme</a><button class="wbtn" id="wbtn" type="button"><i></i><span class="t">connect</span></button><button class="menu" type="button" aria-label="Open the menu"><span></span></button></div>
+</header>
+<div class="sheet"><button class="x" type="button" aria-label="Close the menu">×</button><a href="/">home</a><a href="/pair">pair a meme</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#faq">faq</a><a href="/docs">docs</a></div>
+<main class="page">
+<div class="wrap">
+<div class="phead">
+  <div class="eyebrow rv"><b>every</b> receipt</div>
+  <h1 class="split">every payout, <em>with its proof.</em></h1>
+  <p class="rv d1">each row is a memo the payout wallet wrote on Solana: who it went to, how it landed, what arrived, and a link to the gift on their post.</p>
+</div>
+<div class="verify">
+  <div class="card rv"><b><span>01</span>open the tx</b><p>every row links to its transaction. it was signed by the payout wallet, or it isn't counted.</p></div>
+  <div class="card rv d1"><b><span>02</span>read the memo</b><p>it says the app, the handle, the dollars that arrived and the SOL it took: <code>meme:paid:1:…</code></p></div>
+  <div class="card rv d2"><b><span>03</span>open the proof</b><p>the link goes to the gift on the creator's own post. its time should match the transaction's.</p></div>
+</div>
+<div class="card pw rv" id="rW"><span>payout wallet</span><b>reading…</b></div>
+<div class="tools rv"><div class="seg" id="rP"><button class="on" data-p="" type="button">all</button><button data-p="x" type="button">x money</button><button data-p="instagram" type="button">gifts</button><button data-p="facebook" type="button">stars</button></div></div>
+<div class="tbl rv" id="rT"><div class="row r7 h"><span>creator</span><span>app</span><span>landed as</span><span>arrived</span><span>sent</span><span>when</span><span>proof</span></div><div class="row"><span class="dim" style="grid-column:1/-1">reading the chain…</span></div></div>
+</div>
+</main>
+<script type="module" src="/assets/js/app.js?v=1"></script>
+</body>
+</html>

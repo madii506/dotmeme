@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>.meme</title>
+<meta name="description" content="the .meme payout desk: collect, send, record.">
+<meta name="theme-color" content="#0f0a0f">
+<meta property="og:title" content=".meme">
+<meta property="og:description" content="the .meme payout desk: collect, send, record.">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav-t-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/fav-t-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/fav-t-192.png">
+<link rel="apple-touch-icon" href="/assets/img/fav-180.png">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/m.css?v=1">
+</head>
+<body data-page="console">
+<div class="prog"></div><canvas id="flow"></canvas><div class="grid"></div>
+<header class="top">
+  <a class="brand" href="/" aria-label=".meme home"><i>.</i>meme</a>
+  <nav class="nav" aria-label="Main"><a href="/pair">pair</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#rails">payouts</a><a href="/#faq">faq</a><a href="/docs">docs</a></nav>
+  <div class="tr"><a class="btn btn-p btn-s hcta" href="/pair">pair a meme</a><button class="wbtn" id="wbtn" type="button"><i></i><span class="t">connect</span></button><button class="menu" type="button" aria-label="Open the menu"><span></span></button></div>
+</header>
+<div class="sheet"><button class="x" type="button" aria-label="Close the menu">×</button><a href="/">home</a><a href="/pair">pair a meme</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#faq">faq</a><a href="/docs">docs</a></div>
+<main class="page">
+<div class="wrap">
+<div class="phead">
+  <div class="eyebrow rv"><b>the</b> payout desk</div>
+  <h1 class="split">collect. send. <em>record.</em></h1>
+  <p class="rv d1">the desk for the payout wallet. it moves a creator's fees out of their vault, and writes each gift on-chain with its proof. anyone can watch; only the payout wallet can sign.</p>
+</div>
+<div class="steps3">
+  <div class="card rv"><b><span>01</span>collect</b><p>when a vault holds $25 or more, collect it. the fees move to the payout wallet in one transaction, with a memo.</p></div>
+  <div class="card rv d1"><b><span>02</span>send</b><p>from the payout phone, send $25 inside their app: X Money on X, gifts on their latest reel, stars on Facebook.</p></div>
+  <div class="card rv d2"><b><span>03</span>record</b><p>write the receipt below: what arrived, the SOL it took, and the link to the gift on their post.</p></div>
+</div>
+<div id="con"><div class="empty" style="margin-top:30px"><b>reading the chain…</b></div></div>
+</div>
+</main>
+<script type="module" src="/assets/js/app.js?v=1"></script>
+</body>
+</html>

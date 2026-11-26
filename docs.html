@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>.meme</title>
+<meta name="description" content="how .meme works: the pairing, the vault, the gift, the receipts, consent and limits.">
+<meta name="theme-color" content="#0f0a0f">
+<meta property="og:title" content=".meme">
+<meta property="og:description" content="how .meme works: the pairing, the vault, the gift, the receipts, consent and limits.">
+<meta property="og:image" content="/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/fav-t-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/fav-t-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/fav-t-192.png">
+<link rel="apple-touch-icon" href="/assets/img/fav-180.png">
+<link rel="preload" href="/assets/fonts/jetbrains-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/m.css?v=1">
+</head>
+<body data-page="docs">
+<div class="prog"></div><canvas id="flow"></canvas><div class="grid"></div>
+<header class="top">
+  <a class="brand" href="/" aria-label=".meme home"><i>.</i>meme</a>
+  <nav class="nav" aria-label="Main"><a href="/pair">pair</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#rails">payouts</a><a href="/#faq">faq</a><a href="/docs">docs</a></nav>
+  <div class="tr"><a class="btn btn-p btn-s hcta" href="/pair">pair a meme</a><button class="wbtn" id="wbtn" type="button"><i></i><span class="t">connect</span></button><button class="menu" type="button" aria-label="Open the menu"><span></span></button></div>
+</header>
+<div class="sheet"><button class="x" type="button" aria-label="Close the menu">×</button><a href="/">home</a><a href="/pair">pair a meme</a><a href="/creators">creators</a><a href="/receipts">receipts</a><a href="/#how">how it works</a><a href="/#faq">faq</a><a href="/docs">docs</a></div>
+<main class="page">
+<div class="wrap">
+<div class="phead">
+  <div class="eyebrow rv"><b>the</b> docs</div>
+  <h1 class="split">how .meme <em>works.</em></h1>
+  <p class="rv d1">the whole mechanic, what you sign, where the money sits, what a person does by hand, and what isn't proven yet.</p>
+</div>
+<div class="docs">
+  <nav class="toc" aria-label="On this page"><a href="#idea">the idea</a><a href="#pairing">a pairing</a><a href="#vault">the vault</a><a href="#gift">the gift</a><a href="#receipts">receipts</a><a href="#cut">the cut</a><a href="#consent">consent</a><a href="#limits">limits</a><a href="#words">words</a><a href="#unverified">not proven yet</a><a href="#builders">for builders</a></nav>
+  <div class="doc">
+    <h2 id="idea">the idea</h2>
+    <p>pair any meme to any creator. the meme becomes a coin on pump.fun, and the coin's creator fees go to the creator you picked, as a gift inside their own app. they don't need a wallet, an account or a claim. <b>every other pad says only the creator can claim. this one has nothing to claim.</b></p>
+    <p>three apps, three rails: <b>X → X Money</b>, <b>Instagram → gifts on their reels</b>, <b>Facebook → stars</b>.</p>
+
+    <h2 id="pairing">a pairing</h2>
+    <ol>
+      <li>you pick the app, type the handle, pick a meme and a name. the site checks the handle's shape and shows you the vault it will pay.</li>
+      <li>your browser makes the coin's own key. it never leaves the page.</li>
+      <li>the server builds one transaction: pump.fun's <code>create_v2</code> with the coin's <b>creator set to that creator's vault</b>, your optional first buy, a memo <code>meme:pair:1:…</code>, and a zero-SOL transfer to the tag so the pairing can be found later. it simulates it on Solana first.</li>
+      <li>your wallet signs and pays. the coin's key signs last, in your browser. the server checks every signature, then sends it.</li>
+    </ol>
+    <p>the coin's description reads <code>Paired to X @handle via .meme</code>. it can't be edited after launch, and nobody, including .meme, can point the coin's fees anywhere else.</p>
+    <div class="call"><b>you sign one thing</b>a pump.fun launch where you are the payer and the buyer, and the creator is their vault. your wallet shows the cost before you approve.</div>
+
+    <h2 id="vault">the vault</h2>
+    <p>every creator has one vault per app: a Solana address derived from a secret only this site holds, <code>HMAC-SHA256(secret, "meme:vault:app:handle")</code>. the same handle always lands on the same vault, so every meme paired to them pays into one place, and the vault exists before any coin does.</p>
+    <p>pump.fun sends each coin's creator fees to its vault. the vault never signs a launch. its key is used for one thing: moving its fees to the payout wallet when a gift is due.</p>
+    <div class="call"><b>the trust hole</b>the site holds the key that moves fees out of a vault, and a person sends the gifts. if they stopped, nothing would hide it: the creator's waiting balance would keep growing on their page, and their receipts would stop.</div>
+
+    <h2 id="gift">the gift</h2>
+    <p>each time a vault holds <b>$25</b> or more, the payout wallet collects it, and a person sends exactly $25 inside the creator's app. same size every time, so every receipt reads the same. the rest waits for the next one.</p>
+    <ul>
+      <li><b>X → X Money.</b> sent to their X account. X Money is US-only for now and allows one payment per person per day.</li>
+      <li><b>Instagram → gifts.</b> sent as gifts on their latest reel. only works once the creator has gifts turned on.</li>
+      <li><b>Facebook → stars.</b> sent as stars on their latest video or reel. only works once the creator can receive stars.</li>
+    </ul>
+    <p>a person sends each one because none of these apps lets software send a gift. until a creator's app can receive, their $25s wait in their vault, in public. <b>nothing is ever re-pointed to anyone else.</b></p>
+
+    <h2 id="receipts">receipts</h2>
+    <p>every gift is written on Solana by the payout wallet as a memo, with a zero-SOL transfer to the tag:</p>
+    <pre>meme:paid:1:p=x&amp;h=handle&amp;usd=25&amp;sol=0.17&amp;proof=https://…</pre>
+    <p>only memos signed by the payout wallet are counted. to check one: open its transaction, read the memo, open the proof link on the creator's post and match the time.</p>
+
+    <h2 id="cut">the cut</h2>
+    <p>pump.fun charges its own fee on every trade; part of it is the creator fee, and that part is what lands in the vault. <b>.meme takes nothing from a vault.</b> what is collected from a vault is spent on that creator's gifts.</p>
+    <p>the apps keep part of what is spent on a gift, and the network charges a few cents to move it. every receipt prints the two numbers that show it: the SOL that went out, and the dollars that arrived.</p>
+
+    <h2 id="consent">consent</h2>
+    <ul>
+      <li><b>nobody asked them first.</b> being paired means someone made a meme and pointed its fees at you. it doesn't mean you know .meme exists.</li>
+      <li><b>a gift is not an endorsement.</b> nothing on this site says a creator supports a coin.</li>
+      <li><b>one message ends it.</b> a creator who asks out is out for good: no new coin can pair to them. what already waits is sent to them only if they want it; otherwise it stays in their vault, published, never re-pointed.</li>
+      <li><b>the launcher is public.</b> every pairing shows the wallet that launched it.</li>
+      <li><b>no faces, no names in our art.</b> handles only appear where a visitor typed them.</li>
+    </ul>
+
+    <h2 id="limits">limits</h2>
+    <div class="cant">
+      <div class="cr2 h"><div>it can't</div><div>so it</div></div>
+      <div class="cr2"><div>send gifts by software. no app lets it.</div><div><b>a person sends each one</b> from the payout wallet's phone, and records it on-chain.</div></div>
+      <div class="cr2"><div>pay a creator whose app can't receive.</div><div><b>keeps their $25s waiting</b> in their vault, in public, until it can.</div></div>
+      <div class="cr2"><div>ask creators first. there are millions.</div><div><b>ends a pairing for good</b> the moment a creator asks, no questions.</div></div>
+      <div class="cr2"><div>avoid the apps' own cuts.</div><div><b>prints what went out and what arrived</b> on every receipt.</div></div>
+      <div class="cr2"><div>change a pairing after launch.</div><div><b>locks it in the coin itself.</b> nobody can re-point a coin's fees, including us.</div></div>
+    </div>
+
+    <h2 id="words">words</h2>
+    <div class="words">
+      <div class="card wd"><b>pairing line</b><p>the line in a coin that says whose meme it is. locked at launch.</p></div>
+      <div class="card wd"><b>vault</b><p>the address that is the coin's on-chain creator. its fees land there.</p></div>
+      <div class="card wd"><b>queue</b><p>what is waiting in a vault right now, in public.</p></div>
+      <div class="card wd"><b>quantum</b><p>$25. every payout is exactly one of these.</p></div>
+      <div class="card wd"><b>landing</b><p>the moment a gift shows up on their post.</p></div>
+      <div class="card wd"><b>cold</b><p>a creator whose app can't receive yet. their queue waits.</p></div>
+      <div class="card wd"><b>receipt</b><p>the on-chain record of a landing, with its proof.</p></div>
+      <div class="card wd"><b>out</b><p>a creator who asked to stop. nothing new pairs to them.</p></div>
+      <div class="card wd"><b>a dash</b><p>means there is no number to show. a zero means we checked and found none.</p></div>
+      <div class="card wd"><b>tag</b><p>the address every pairing and receipt touches, so the chain can be searched.</p></div>
+    </div>
+
+    <h2 id="unverified">not proven yet</h2>
+    <p>what is built and what has been seen working are different things. today:</p>
+    <ul>
+      <li>the launch is built with pump.fun's own SDK and simulated on Solana before you sign, but <b>the first real launch through this site is the first proof</b>.</li>
+      <li>after a coin graduates to PumpSwap, its creator fees may arrive as wrapped SOL. collecting them is built but not yet tested with a real coin.</li>
+      <li>X Money is US-only and allows one payment per person per day. gifts and stars depend on what each creator has turned on.</li>
+      <li>a gift is sent by a person, so the only proof it landed is the link on its receipt.</li>
+    </ul>
+
+    <h2 id="builders">for builders</h2>
+    <p>there is no database. everything on this site is rebuilt from Solana, and you can do the same.</p>
+    <div class="eps">
+      <div><code>tag</code><code id="dTag">GoB5DWt5sKZySemfGVgJTKKqyfosWwyG5MyN6yg5ZzD</code></div>
+      <div><code>pairing memo</code><code>meme:pair:1:n=&amp;s=&amp;i=&amp;p=&amp;h=&amp;m=&lt;mint&gt;</code></div>
+      <div><code>receipt memo</code><code>meme:paid:1:p=&amp;h=&amp;usd=&amp;sol=&amp;proof=</code></div>
+      <div><code>collect memo</code><code>meme:collect:1:p=&amp;h=&amp;lamports=</code></div>
+      <div><code>GET /api/meme?a=register</code><span>every creator, their memes, waiting and sent</span></div>
+      <div><code>GET /api/meme?a=creator&amp;p=&amp;h=</code><span>one creator, with their receipts</span></div>
+      <div><code>GET /api/meme?a=coin&amp;mint=</code><span>one coin, its pairing and its curve</span></div>
+      <div><code>GET /api/meme?a=receipts</code><span>the last 100 receipts</span></div>
+      <div><code>GET /api/meme?a=vault&amp;p=&amp;h=</code><span>the vault address for any handle</span></div>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+<script type="module" src="/assets/js/app.js?v=1"></script>
+</body>
+</html>
